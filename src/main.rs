@@ -6,6 +6,8 @@ fn main() {
     let n: i32;
     let mut process: [i32; 100] =[0; 100];
     let mut idea_process:[i32; 100] = [0; 100];
+    let mut count: i32;
+    let mut tp: i32;
 
     n = read!();
     for i in 0..n as usize  {
@@ -16,6 +18,17 @@ fn main() {
         idea_process[i] = read!();
     }
     rotate(&mut process, n as usize);
+
+    for i in 0..n {
+        if process[i] == idea_process[i] {
+           count= count + 1;
+        }else {
+            while process[tp] != idea_process[tp] {
+                process = rotate(process,n);
+            }
+        }
+    }
+
 
     for i in 0..n as usize {
         println!(" process : {}  idealProcess : {}\n", process[i], idea_process[i]);

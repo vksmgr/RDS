@@ -18,7 +18,7 @@ fn logic(case: usize){
     let ans_first: usize = read!();
     let mut count = 0;
     let mut number = 0;
-    let mut first_arr =[[0; 4]; 4];
+    let mut first_arr = [[0; 4]; 4];
     for i in 0..4 {
         for j in 0..4 {
             first_arr[i][j] = read!();
@@ -32,9 +32,13 @@ fn logic(case: usize){
             second_arr[i][j] = read!();
         }
     }
+    let mut new_array : [i32; 4] = [0; 4];
+    for i in 0..4 {
+        new_array[i] = second_arr[ans_second-1][i];
+    }
 
     for i in 0..4 {
-            if first_arr[ans_first-1][i] == second_arr[ans_second-1][i]{
+            if check(first_arr[ans_first-1][i],new_array){
                 count = count + 1;
                 number = first_arr[ans_first-1][i];
         }
@@ -48,4 +52,13 @@ fn logic(case: usize){
     if count == 0{
         println!("Case #{}: {}",case+1 , "Volunteer cheated!");
     }
+}
+
+fn check(num: i32,arr: [i32; 4] ) -> bool{
+    for i in 0..4 {
+        if num == arr[i]{
+            return true;
+        }
+    }
+    false
 }

@@ -1,7 +1,13 @@
 [package]
-name = "rds"
+name = "algojam"
 version = "0.1.0"
 authors = ["vksmgr <cseghrce@gmail.com>"]
 
+description = "This is about google code jam."
+
+license = "MIT"
+
 [dependencies]
 text_io = "0.1.6"
+algojam = "0.1.0"
+

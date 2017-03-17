@@ -1,6 +1,15 @@
 [root]
-name = "rds"
+name = "algojam"
 version = "0.1.0"
+dependencies = [
+ "algojam 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "text_io 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "algojam"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "text_io 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
@@ -11,4 +20,5 @@ version = "0.1.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [metadata]
+"checksum algojam 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "670e9b05219b4a90a6bbd15a46347e96d562a857db3dcb3773191b9a85c759be"
 "checksum text_io 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)" = "090d2ee73ae8f01646d500fbb72f99f0b2aea174b7b15d58359bbdf083f73e6d"

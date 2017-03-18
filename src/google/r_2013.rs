@@ -33,17 +33,25 @@ fn logic(case: usize) {
         }
     }
 
-    println!("");
     for i in 0..4 {
-        print!("row  {} ", check_row(input, i));
 
-        print!("column  {} ", check_col(input, i));
+        if check_row(input, i) == 1 || check_col(input, i) == 1 || check_antidiagonal(input) == 1 || check_diagonal(input) == 1{
+            println!("Case #{}: {}",case+1,"X won");
+            break;
+        }
+        if check_row(input, i) == 0 || check_col(input, i) == 0 || check_antidiagonal(input) == 0 || check_diagonal(input) == 0 {
+            println!("Case #{}: {}",case+1,"O won");
+            break;
+        }else if check_row(input, i) == -1 || check_col(input, i) == -1 || check_antidiagonal(input) == -1 || check_diagonal(input) == -1 {
+            if is_complete(input){
+                println!("Case #{}: {}",case+1,"Game has not completed");
+            }else {
+                println!("Case #{}: {}",case+1,"Draw");
+            }
+            break;
+        }
 
-        print!("column  {} ", check_diagonal(input));
-
-        break;
     }
-    println!("");
 }
 
 fn check_row(input: [[char; 4]; 4], c: usize) -> i32 {
@@ -117,3 +125,46 @@ fn check_diagonal(input: [[char; 4]; 4]) -> i32 {
     }
 }
 
+
+fn check_antidiagonal(input: [[char; 4]; 4]) -> i32 {
+    let mut X: usize = 0;
+    let mut T: usize = 0;
+    let mut O: usize = 0;
+    for i in 0..4 {
+        for j in 0..4 {
+            if i == j {
+                if input[i][3-j] == 'X' {
+                    X = X + 1;
+                } else if input[i][3-j] == 'T' {
+                    T = T + 1;
+                } else if input[i][3-j] == 'O' {
+                    O = O + 1;
+                }
+            }
+        }
+    }
+
+    if X == 4 || X == 3 && T == 1 {
+        return 1;
+    } else if O == 4 || O == 3 && T == 1 {
+        return 0;
+    } else {
+        -1
+    }
+}
+
+
+fn is_complete(input: [[char; 4]; 4]) -> bool {
+    let mut dot : usize = 0;
+    for i in 0..4 {
+        for j in 0..4 {
+            if input[i][j] == '.' {
+                dot = dot + 1;
+            }
+        }
+    }
+    if dot > 0{
+        return true;
+    }
+    false
+}

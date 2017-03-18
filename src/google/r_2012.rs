@@ -21,6 +21,7 @@ fn logic(case: usize) {
     let err = &'0';
 
     let mut dic = HashMap::new();
+
     dic.insert('a', 'y');
     dic.insert('b', 'h');
     dic.insert('c', 'e');
